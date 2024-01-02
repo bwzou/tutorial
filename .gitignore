@@ -1,2 +1,4 @@
 .vscode/
 build/
+src/shader/generated
+.DS_Store

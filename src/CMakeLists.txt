@@ -30,6 +30,9 @@ else()
     message(FATAL_ERROR "Unknown Platform")        
 endif()    
 
+set(SHADER_COMPILE_TARGET TutorialShaderCompile)
+add_subdirectory(shader)
+
 add_subdirectory(lib)
 
 file(GLOB TUTORIAL_HEADERS CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
@@ -43,6 +46,13 @@ add_executable(${TARGET_NAME} ${TUTORIAL_HEADERS} ${TUTORIAL_SOURCES})
 target_link_libraries(${TARGET_NAME} PUBLIC glm)
 target_link_libraries(${TARGET_NAME} PUBLIC glfw)
 target_link_libraries(${TARGET_NAME} PUBLIC ${vulkan_lib})
+
+add_dependencies(${TARGET_NAME} ${SHADER_COMPILE_TARGET})
+
+target_include_directories(
+  ${TARGET_NAME} 
+  PUBLIC $<BUILD_INTERFACE:${DEPENDENT_LIBRARY_DIR}/vulkanmemoryallocator/include>
+)
 
 target_include_directories(
   ${TARGET_NAME}
