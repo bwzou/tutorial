@@ -20,3 +20,7 @@ if(NOT TARGET glfw)
     set_target_properties(update_mappings PROPERTIES FOLDER ${dependent_library}/glfw)
 endif()    
 
+if(NOT TARGET stb)
+    include(stb.cmake)
+    set_target_properties(stb PROPERTIES FOLDER ${dependent_library}/stb)
+endif()

@@ -45,6 +45,7 @@ add_executable(${TARGET_NAME} ${TUTORIAL_HEADERS} ${TUTORIAL_SOURCES})
 # Link dependencies    
 target_link_libraries(${TARGET_NAME} PUBLIC glm)
 target_link_libraries(${TARGET_NAME} PUBLIC glfw)
+target_link_libraries(${TARGET_NAME} PUBLIC stb)
 target_link_libraries(${TARGET_NAME} PUBLIC ${vulkan_lib})
 
 add_dependencies(${TARGET_NAME} ${SHADER_COMPILE_TARGET})
